@@ -1,9 +1,12 @@
-// import io from "socket.io";
-// const io= io();
+import { Server } from "socket.io";
 
-const io = require("socket.io")(3001, {
+const io = new Server(3001, {
   cors: {
-    origin: "http://localhost: 3000",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
   },
+});
+
+io.on("connection", (socket) => {
+  console.log("connected");
 });
